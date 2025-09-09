@@ -6,6 +6,7 @@ window.onload = function () {
   includeHTML("sidebar", "shared_layout/sidebar.html");
   includeHTML("header", "shared_layout/header.html");
   loadPage("Pages/dashboard.html");
+  alert("Welcome to the Dashboard! \n1- click on add event to add one \n 2- click on the profile picture on the top right to view your profile.");
 };
 
 function includeHTML(id, file) {
