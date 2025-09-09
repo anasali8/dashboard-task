@@ -6,7 +6,8 @@ window.onload = function () {
   includeHTML("sidebar", "shared_layout/sidebar.html");
   includeHTML("header", "shared_layout/header.html");
   loadPage("Pages/dashboard.html");
-  alert("Welcome to the Dashboard! \n1- click on add event to add one \n 2- click on the profile picture on the top right to view your profile.");
+  document.getElementById("sec").classList.remove("content");
+  document.getElementById("sec").classList.add("animated");
 };
 
 function includeHTML(id, file) {
@@ -64,13 +65,22 @@ function addCard() {
 }
 
 function openProfile() {
+    document.getElementById('sec').classList.remove('animated');
+    document.getElementById('sec').classList.add('content');
     document.getElementById('dashboard').classList.remove('active');
-  openPage("profile");
+    openPage("profile");
+    // set animated class to the profile button
+    setTimeout(() => {
+        document.getElementById("sec").classList.remove("content");
+        document.getElementById("sec").classList.add("animated");
+    }, 30);
 }
 
 function openEvents() {
     document.getElementById('dashboard').classList.add('active');
-  openPage("events");
+    openPage("events");document.getElementById("sec").classList.remove("content");
+    document.getElementById("sec").classList.add("animated");
+
 }
 
 // page To Open
@@ -79,6 +89,7 @@ function openPage(type) {
     pageType = "events";
     loadPage("Pages/dashboard.html");
   } else if (type === "profile" && pageType !== "profile") {
+    
     pageType = "profile";
     loadPage("Pages/profile.html");
     includeHTML("profile-card", "shared_layout/profile_Card.html");
@@ -89,6 +100,8 @@ function openPage(type) {
 
 // add event listener to the profile button
 function getProjectsContent() {
+    document.getElementById('projects').classList.remove('animated');
+    document.getElementById('projects').classList.add('content');
   var v = document.getElementById("projects-btn");
   if (v.innerHTML.toLowerCase() != selected_profile) {
     selected_profile = "projects";
@@ -96,10 +109,19 @@ function getProjectsContent() {
     document.getElementById("team-btn").classList.remove("btn-active");
     document.getElementById("vacations-btn").classList.remove("btn-active");
     includeHTML("projects", "shared_layout/project.html");
+    
+    setTimeout(() => {
+        document.getElementById("projects").classList.remove("content");
+        document.getElementById("projects").classList.add("animated");
+    }, 30);
   }
 }
 
 function getTeamContent() {
+
+    document.getElementById('team').classList.remove('animated');
+    document.getElementById('team').classList.add('content');
+
   var v = document.getElementById("team-btn");
   if (v.innerHTML.toLowerCase() != selected_profile) {
     selected_profile = "team";
@@ -107,5 +129,11 @@ function getTeamContent() {
     document.getElementById("team-btn").classList.add("btn-active");
     document.getElementById("vacations-btn").classList.remove("btn-active");
     includeHTML("projects", "shared_layout/team.html");
+
+    setTimeout(() => {
+        document.getElementById("team").classList.remove("content");
+        document.getElementById("team").classList.add("animated");
+    }, 30);
+
   }
 }
